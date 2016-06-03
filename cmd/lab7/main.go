@@ -79,12 +79,11 @@ func main() {
 		var price string
 		var size int
 		var spice_level int
-		var type string
 		var name string
 
 
         for rows.Next() {
-            rows.Scan(&id, &image, &recommended, &price, &size, &spice_level, &type, &name)
+            rows.Scan(&id, &image, &recommended, &price, &size, &spice_level, &name)
             array:= []string{strconv.Itoa(id), image, name, price}
             output = append(output, array)
         }
