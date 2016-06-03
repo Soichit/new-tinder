@@ -55,10 +55,20 @@ func main() {
 		}
 	})
 
+<<<<<<< HEAD
 	router.GET("/query1", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
 		rows, err := db.Query("SELECT * FROM table1") // <--- EDIT THIS LINE
+=======
+
+
+
+	router.GET("/query1", func(c *gin.Context) {
+		table := "<table class='table'><thead><tr>"
+		// put your query here
+		rows, err := db.Query("SELECT * FROM food") // <--- EDIT THIS LINE
+>>>>>>> 21484de2d749526925e9b508b51dab77e0b440dd
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
@@ -75,6 +85,7 @@ func main() {
 		table += "</thead><tbody>"
 		// declare all your RETURNED columns here
 		var id int      // <--- EDIT THESE LINES
+<<<<<<< HEAD
 		var name string //<--- ^^^^
 		for rows.Next() {
 			// assign each of them, in order, to the parameters of rows.Scan.
@@ -82,12 +93,24 @@ func main() {
 			rows.Scan(&id, &name) // <--- EDIT THIS LINE
 			// can't combine ints and strings in Go. Use strconv.Itoa(int) instead
 			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + name + "</td></tr>" // <--- EDIT THIS LINE
+=======
+		var image string
+		var name string //<--- ^^^^
+		//var price []uint8
+		for rows.Next() {
+			// assign each of them, in order, to the parameters of rows.Scan.
+			// preface each variable with &
+			rows.Scan(&id, &image, &name) // <--- EDIT THIS LINE
+			// can't combine ints and strings in Go. Use strconv.Itoa(int) instead
+			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + image + "</td><td>" + name + "</td></tr>"// <--- EDIT THIS LINE
+>>>>>>> 21484de2d749526925e9b508b51dab77e0b440dd
 		}
 		// finally, close out the body and table
 		table += "</tbody></table>"
 		c.Data(http.StatusOK, "text/html", []byte(table))
 	})
 
+<<<<<<< HEAD
 	router.GET("/query2", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
@@ -115,11 +138,90 @@ func main() {
 		table += "</tbody></table>"
 		c.Data(http.StatusOK, "text/html", []byte(table))
 	})
+=======
+
+
+	router.GET("getFoodStack", func(c *gin.Context) {
+    rows, err := db.Query("SELECT * FROM food")
+        if err != nil {
+            c.AbortWithError(http.StatusInternalServerError, err)
+            return
+        }
+
+        
+
+        // if you are simply inserting data you can stop here. I'd suggest returning a JSON object saying "insert successful" or something along those lines.
+        // get all the columns. You can do something with them here if you like, such as adding them to a table header, or adding them to the JSON
+        cols, _ := rows.Columns()
+        if len(cols) == 0 {
+            c.AbortWithStatus(http.StatusNoContent)
+            return
+        }
+        
+        output := make([][3]string, 0)
+        
+
+    	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
+        var id int
+		var image string
+		var name string
+
+        for rows.Next() {
+            rows.Scan(&id, &image, &name)
+            // VERY important that you store the result back in output
+            array:= [3]string{strconv.Itoa(id), image, name}
+            output = append(output, array)
+        }
+
+        //Finally, return your results to the user:
+    	c.JSON(http.StatusOK, gin.H{"result": output})
+
+
+
+        /*
+        type Response1 struct {
+		    Id   int
+		    Image string
+		    Name string
+		}
+		output := make([][]byte, 0)
+        
+
+    	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
+        var id int
+		var image string
+		var name string
+
+        for rows.Next() {
+            rows.Scan(&id, &image, &name)
+            // VERY important that you store the result back in output
+
+            res1D := Response1{
+		        Id: id,
+		        Image: image,
+		        Name: name,
+		    }
+
+		    res1B, _ := json.Marshal(res1D)
+		    output = append(output, res1B)
+        }
+        */
+
+        //Finally, return your results to the user:
+    	//c.JSON(http.StatusOK, gin.H{"result": output})
+  })
+
+
+>>>>>>> 21484de2d749526925e9b508b51dab77e0b440dd
 
 	router.GET("/query3", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
+<<<<<<< HEAD
 		rows, err := db.Query("SELECT * FROM table1") // <--- EDIT THIS LINE
+=======
+		rows, err := db.Query("SELECT * FROM food") // <--- EDIT THIS LINE
+>>>>>>> 21484de2d749526925e9b508b51dab77e0b440dd
 		if err != nil {
 			// careful about returning errors to the user!
 			c.AbortWithError(http.StatusInternalServerError, err)
