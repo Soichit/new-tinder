@@ -1,5 +1,5 @@
 $(function(){
-
+    /*
     var jsonData={'result':[
         [1, 'http://www.johnscaffe.com/wp-content/uploads/2016/03/slider-Johns-Caffe-Pizza.jpg', 'pizza'],
         [2, 'http://www.tastyburger.com/wp-content/themes/tastyBurger/images/home/img-large-burger.jpg', 'burger'],
@@ -19,6 +19,7 @@ $(function(){
         [3, 'http://media.cuponofertas.com.mx/2014/02/dominos-pizzas-oferta.jpg'],
         [4, 'http://www.recipemash.com/wp-content/uploads/2013/01/How-to-Make-Dominos-Lava-Cake-.jpg']
     ]};
+    */
 
 
 
@@ -49,10 +50,13 @@ $(function(){
             jsonName = data.result[2];
             jsonUrl = data.result[1];
             jsonPrice = data.result[3];
+            /*
             console.log(jsonName);
             console.log(jsonUrl);
             console.log(jsonPrice);
+            */
             document.getElementById("foodName").innerHTML = jsonName;
+            document.getElementById("foodPrice").innerHTML = jsonPrice;
             document.getElementById("foodImage").src = jsonUrl;
         }, "json")
     }
