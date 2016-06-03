@@ -2,6 +2,7 @@ $(function(){
 
     var index = 0;
     var jsonData;
+    var foodLength = 0;
 
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
@@ -19,6 +20,7 @@ $(function(){
         $.get("getFoodStack", function(data){
             console.log(data);
             jsonData = data.result[index];
+            foodLength = data.result.length;
             jsonUrl = jsonData[1];
             jsonName = jsonData[4];
             jsonPrice = jsonData[2];
@@ -33,7 +35,7 @@ $(function(){
     function disliked() {
         console.log(index);
         document.getElementById("youMatched").innerHTML = "";
-        if (index >= 9) { //size - 1
+        if (index >= foodLength - 1) { //size - 1
             document.getElementById("foodName").innerHTML = "----";
             document.getElementById("foodPrice").innerHTML = "";
             document.getElementById("foodImage").src = 'static/img/empty.jpg';
@@ -44,7 +46,7 @@ $(function(){
     }
 
     function liked() {
-        if (index < 9) {
+        if (index <= foodLength - 1) {
             getData();
             document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
         }
