@@ -42,8 +42,8 @@ $(function(){
             console.log(data);
             jsonData = data.result[index];
             jsonUrl = jsonData[1];
-            jsonName = jsonData[7];
-            jsonPrice = jsonData[3];
+            jsonName = jsonData[4];
+            jsonPrice = jsonData[2];
 
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodPrice").innerHTML = jsonPrice;
