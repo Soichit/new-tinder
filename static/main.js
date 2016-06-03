@@ -33,9 +33,9 @@ $(function(){
     function disliked() {
         console.log(index);
         document.getElementById("youMatched").innerHTML = "";
-        if (index >= 7) { //size - 2
-            document.getElementById("foodName").innerHTML = "-";
-            document.getElementById("foodPrice").innerHTML = "-.--";
+        if (index >= 8) { //size - 2
+            document.getElementById("foodName").innerHTML = "----";
+            document.getElementById("foodPrice").innerHTML = "";
             document.getElementById("foodImage").src = 'static/img/empty.jpg';
         } else {
             index++;
@@ -44,7 +44,7 @@ $(function(){
     }
 
     function liked() {
-        if (index < 7) {
+        if (index < 8) {
             getData();
             document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
         }
