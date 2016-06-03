@@ -1,26 +1,14 @@
 body {
     font-size: 18pt;
-<<<<<<< HEAD
 }
 
 h1, h3, #results {
     text-align: center;
-=======
-    text-align: center;
-}
-
-h1, h3, #results {
->>>>>>> 9d0a955de6cfdc088a287b01c2136f7293064fed
     margin: 0 0 0 0;
 }
 h1 {
     padding-top: 10px;
     padding-bottom: 15px;
-<<<<<<< HEAD
-=======
-    text-align: left;
-    margin-left: 20px;
->>>>>>> 9d0a955de6cfdc088a287b01c2136f7293064fed
 }
 h3 {
     padding-bottom: 10px;
@@ -29,57 +17,9 @@ header {
     background-color: #D1B1CB;
 }
 .content {
-<<<<<<< HEAD
     background-color: #EAFDF8;
     min-height: 100px;
-=======
-    margin-top: 60px;
-    min-height: 100px;
-    text-align: center;
-    display: inline-block;
->>>>>>> 9d0a955de6cfdc088a287b01c2136f7293064fed
 }
 .content ul {
     padding-top: 25px;
 }
-<<<<<<< HEAD
-=======
-
-#userInterface {
-    text-align: center;
-    display: inline-block;
-}
-
-#foodImage {
-    height: 470px;
-    width: 500px;
-    padding: 5px;
-    border-radius: 5%
-}
-
-#cardStack {
-    margin: 0 auto;
-    width: 500px;
-    border: 1px solid black;
-    border-radius:5%;
-    padding-bottom: 50px;
-}
-
-#youMatched {
-    text-align: center;
-    font-size: 60px;
-}
-
-.likes {
-    height: 150px;
-    width: 150px;
-    margin: 20px;
-}
-
-#backButton {
-    float: left;
-    margin-left: 160px;
-    height: 80px;
-    width: 80px;
-}
->>>>>>> 9d0a955de6cfdc088a287b01c2136f7293064fed
