@@ -22,15 +22,7 @@ $(function(){
     */
 
 
-
-    var jsonName;
-    var jsonUrl;
-    var jsonPrice;
     var index = 0;
-
-    var restaurantIndex = 0;
-    var restaurantView = false;
-
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
         document.getElementById("like").onclick = liked;
@@ -46,11 +38,10 @@ $(function(){
     function getData() {
         $.get("getFoodStack", function(data){
             console.log(data);
-            console.log("TEST");
-            jsonData = data;
-            jsonName = data.result[1][2];
-            jsonUrl = data.result[1][1];
-            jsonPrice = data.result[1][3];
+            jsonData = data.result[index];
+            jsonUrl = jsonData[1];
+            jsonName = jsonData[2];
+            jsonPrice = jsonData[3];
 
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodPrice").innerHTML = jsonPrice;
@@ -60,18 +51,24 @@ $(function(){
     
 
     function disliked() {
-        if (index >= 9) {
-            index = -1;
+        if (index >= 4) {
+            document.getElementById("foodName").innerHTML = jsonName;
+            document.getElementById("foodPrice").innerHTML = jsonPrice;
+            document.getElementById("foodImage").src = 'static/img/empty.jpg';
+        } else {
+            index++;
+            restaurantIndex = 0;
+            document.getElementById("youMatched").innerHTML = "";
+            restaurantView = false;
+            getData();
         }
-        index++;
-        restaurantIndex = 0;
-        document.getElementById("youMatched").innerHTML = "";
-        restaurantView = false;
-        getData();    }
+    }
 
     function liked() {
-        document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
-        restaurantView = false;
+        if (index < 4) {
+            document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
+            restaurantView = false;
+        }
     }
 
 })
