@@ -32,7 +32,6 @@ $(function(){
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
         document.getElementById("like").onclick = liked;
-        document.getElementById("foodImage").onclick = clickedImage;
         getData();
     };
 
