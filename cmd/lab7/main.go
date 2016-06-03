@@ -119,12 +119,12 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            output = append(output, id)
+            output = append(output, strconv.Itoa(id))
             output = append(output, image)
             output = append(output, name)
             output = append(output, price)
         }
-        
+
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
     })
