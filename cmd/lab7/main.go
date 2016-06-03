@@ -102,8 +102,6 @@ func main() {
             return
         }
 
-        
-
         // if you are simply inserting data you can stop here. I'd suggest returning a JSON object saying "insert successful" or something along those lines.
         // get all the columns. You can do something with them here if you like, such as adding them to a table header, or adding them to the JSON
         cols, _ := rows.Columns()
@@ -111,11 +109,9 @@ func main() {
             c.AbortWithStatus(http.StatusNoContent)
             return
         }
-        
-        output := make([][4]string, 0)
-        
 
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
+        output := make([4]string, 0)
         var id int
 		var image string
 		var name string
@@ -123,15 +119,12 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            // VERY important that you store the result back in output
             array:= [4]string{strconv.Itoa(id), image, name, price}
             output = append(output, array)
         }
-
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
-
-  })
+    })
 
 
 

@@ -21,7 +21,7 @@ $(function(){
     ]};
 
 
-    /*
+
     var jsonName;
     var jsonUrl;
     var index = 0;
@@ -47,26 +47,15 @@ $(function(){
             jsonData = data;
             jsonName = data[2];
             jsonUrl = data[1];
-            console.log(name);
+            console.log(jsonName);
+            console.log(jsonUrl);
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodImage").src = jsonUrl;
         }, "json")
     }
     
-
-   /*
-    function getData() {
-        if (restaurantView) {
-            jsonUrl = restaurantData.result[index][1];
-        } else {
-            jsonUrl = jsonData.result[index][1];
-            jsonName = jsonData.result[index][2];
-        }
-        document.getElementById("foodName").innerHTML = jsonName;
-        document.getElementById("foodImage").src = jsonUrl;
-    }
     */
-    /*
+
     function disliked() {
         if (index >= 9) {
             index = -1;
@@ -84,7 +73,6 @@ $(function(){
         restaurantView = false;
         hideElements();
     }
-    */
 
 })
 
