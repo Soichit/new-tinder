@@ -38,14 +38,12 @@ $(function(){
         getData();
     };
 
->>>>>>> 9d0a955de6cfdc088a287b01c2136f7293064fed
     $.get("/ping", function(data){
         if(data.error == "true"){
             $("#results").prepend("<div class='alert alert-danger'><strong>Error!</strong> "+ data.message +"</div>");
         }
     }, "json")
 
-<<<<<<< HEAD
     $.get("/query1", function(data){
         $("#firstQuery").append(data);
     }, "html")
@@ -59,7 +57,6 @@ $(function(){
     }, "html")
 
 })
-=======
     function getData() {
         $.get("getFoodStack", function(data){
             console.log(data);
@@ -91,9 +88,3 @@ $(function(){
     }
 
 })
-
-
-
-
-
->>>>>>> 9d0a955de6cfdc088a287b01c2136f7293064fed
