@@ -23,7 +23,11 @@ var (
 	db *sql.DB
 )
 
-var global_var = 0
+var globalIndex;
+
+func init() {
+	globalIndex = 0;
+}
 
 func main() {
 	port := os.Getenv("PORT")
@@ -97,7 +101,7 @@ func main() {
 	*/
 
 	router.GET("getFoodStack", func(c *gin.Context) {
-    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(global_var))
+    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(globalIndex)
         if err != nil {
             c.AbortWithError(http.StatusInternalServerError, err)
             return
