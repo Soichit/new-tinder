@@ -26,7 +26,6 @@ var (
 
 
 func main() {
-	var globalIndex = 0
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("$PORT must be set")
@@ -73,7 +72,7 @@ func main() {
             return
         }
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
-        output := make([]string, 0)
+        output := make([][]string, 0)
         var id int
 		var image string
 		var name string
@@ -81,10 +80,8 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            output = append(output, strconv.Itoa(id))
-            output = append(output, image)
-            output = append(output, name)
-            output = append(output, price)
+            array:= [3]string{strconv.Itoa(id), image, name, price}
+            output = append(output, array)
         }
 
         //Finally, return your results to the user:
