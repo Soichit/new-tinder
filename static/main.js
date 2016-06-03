@@ -42,7 +42,7 @@ $(function(){
             console.log(data);
             jsonData = data.result[index];
             jsonUrl = jsonData[1];
-            jsonName = jsonData[2];
+            jsonName = jsonData[7];
             jsonPrice = jsonData[3];
 
             document.getElementById("foodName").innerHTML = jsonName;
