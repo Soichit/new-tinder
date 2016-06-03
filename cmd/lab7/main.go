@@ -59,7 +59,7 @@ func main() {
 
 
 	router.GET("getFoodStack", func(c *gin.Context) {
-    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(globalIndex))
+    rows, err := db.Query("SELECT * FROM food")
         if err != nil {
             c.AbortWithError(http.StatusInternalServerError, err)
             return
@@ -80,7 +80,7 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            array:= [4]string{strconv.Itoa(id), image, name, price}
+            array:= []string{strconv.Itoa(id), image, name, price}
             output = append(output, array)
         }
 
