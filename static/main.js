@@ -54,7 +54,7 @@ $(function(){
         }, "json")
     }
     
-    
+
     function disliked() {
         if (index >= 9) {
             index = -1;
@@ -63,14 +63,11 @@ $(function(){
         restaurantIndex = 0;
         document.getElementById("youMatched").innerHTML = "";
         restaurantView = false;
-        getData();
-        hideElements();
-    }
+        getData();    }
 
     function liked() {
         document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
         restaurantView = false;
-        hideElements();
     }
 
 })
