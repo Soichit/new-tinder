@@ -23,6 +23,8 @@ var (
 	db *sql.DB
 )
 
+var global_var int := 0;
+
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -94,13 +96,12 @@ func main() {
 	})
 	*/
 
-	router.GET("getFoodStack", foodNumber, func(c *gin.Context) {
-    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(foodNumber))
+	router.GET("getFoodStack", func(c *gin.Context) {
+    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(global_var))
         if err != nil {
             c.AbortWithError(http.StatusInternalServerError, err)
             return
         }
-
         // if you are simply inserting data you can stop here. I'd suggest returning a JSON object saying "insert successful" or something along those lines.
         // get all the columns. You can do something with them here if you like, such as adding them to a table header, or adding them to the JSON
         cols, _ := rows.Columns()
@@ -108,7 +109,6 @@ func main() {
             c.AbortWithStatus(http.StatusNoContent)
             return
         }
-
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
         output := make([]string, 0)
         var id int
@@ -127,8 +127,6 @@ func main() {
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
     })
-
-
 	// NO code should go after this line. it won't ever reach that point
 	router.Run(":" + port)
 }

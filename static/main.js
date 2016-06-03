@@ -37,7 +37,7 @@ $(function(){
         getData();
     };
 
-    $.get("/ping", 2, function(data){
+    $.get("/ping", function(data){
         if(data.error == "true"){
             $("#results").prepend("<div class='alert alert-danger'><strong>Error!</strong> "+ data.message +"</div>");
         }
@@ -50,11 +50,7 @@ $(function(){
             jsonName = data.result[2];
             jsonUrl = data.result[1];
             jsonPrice = data.result[3];
-            /*
-            console.log(jsonName);
-            console.log(jsonUrl);
-            console.log(jsonPrice);
-            */
+
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodPrice").innerHTML = jsonPrice;
             document.getElementById("foodImage").src = jsonUrl;
