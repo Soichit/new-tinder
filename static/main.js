@@ -53,7 +53,9 @@ $(function(){
     
 
     function disliked() {
+        console.log(index);
         if (index >= 4) {
+            console.log("TEST")
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodPrice").innerHTML = jsonPrice;
             document.getElementById("foodImage").src = 'static/img/empty.jpg';
