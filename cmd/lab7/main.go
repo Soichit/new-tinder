@@ -111,7 +111,7 @@ func main() {
         }
 
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
-        output := make([4]string, 0)
+        output := make([]string, 0)
         var id int
 		var image string
 		var name string
@@ -119,7 +119,7 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            array:= [4]string{strconv.Itoa(id), image, name, price}
+            array:= []string{strconv.Itoa(id), image, name, price}
             output = append(output, array)
         }
         //Finally, return your results to the user:
