@@ -33,12 +33,7 @@ $(function(){
         document.getElementById("dislike").onclick = disliked;
         document.getElementById("like").onclick = liked;
         document.getElementById("foodImage").onclick = clickedImage;
-
-        document.getElementById("rightArrow").onclick = clickedRight;
-        document.getElementById("leftArrow").onclick = clickedLeft;
-        document.getElementById("backButton").onclick = clickedBack;
         getData();
-        hideElements();
     };
 
     $.get("/ping", function(data){

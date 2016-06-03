@@ -119,50 +119,18 @@ func main() {
         var id int
 		var image string
 		var name string
+		var price string
 
         for rows.Next() {
-            rows.Scan(&id, &image, &name)
+            rows.Scan(&id, &image, &name, &price)
             // VERY important that you store the result back in output
-            array:= [3]string{strconv.Itoa(id), image, name}
+            array:= [3]string{strconv.Itoa(id), image, name, price}
             output = append(output, array)
         }
 
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
 
-
-
-        /*
-        type Response1 struct {
-		    Id   int
-		    Image string
-		    Name string
-		}
-		output := make([][]byte, 0)
-        
-
-    	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
-        var id int
-		var image string
-		var name string
-
-        for rows.Next() {
-            rows.Scan(&id, &image, &name)
-            // VERY important that you store the result back in output
-
-            res1D := Response1{
-		        Id: id,
-		        Image: image,
-		        Name: name,
-		    }
-
-		    res1B, _ := json.Marshal(res1D)
-		    output = append(output, res1B)
-        }
-        */
-
-        //Finally, return your results to the user:
-    	//c.JSON(http.StatusOK, gin.H{"result": output})
   })
 
 
