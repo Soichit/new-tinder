@@ -54,8 +54,7 @@ $(function(){
         }, "json")
     }
     
-    */
-
+    
     function disliked() {
         if (index >= 9) {
             index = -1;
