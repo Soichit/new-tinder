@@ -33,7 +33,7 @@ $(function(){
     function disliked() {
         console.log(index);
         document.getElementById("youMatched").innerHTML = "";
-        if (index >= 2) {
+        if (index >= 7) { //size - 2
             document.getElementById("foodName").innerHTML = "-";
             document.getElementById("foodPrice").innerHTML = "-.--";
             document.getElementById("foodImage").src = 'static/img/empty.jpg';
@@ -44,7 +44,7 @@ $(function(){
     }
 
     function liked() {
-        if (index < 2) {
+        if (index < 7) {
             getData();
             document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
         }
