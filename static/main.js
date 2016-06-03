@@ -23,6 +23,8 @@ $(function(){
 
 
     var index = 0;
+    var jsonData;
+
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
         document.getElementById("like").onclick = liked;
@@ -66,6 +68,7 @@ $(function(){
 
     function liked() {
         if (index < 4) {
+            getData();
             document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
             restaurantView = false;
         }
