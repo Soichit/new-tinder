@@ -37,7 +37,7 @@ $(function(){
         getData();
     };
 
-    $.get("/ping", function(data){
+    $.get("/ping", 2, function(data){
         if(data.error == "true"){
             $("#results").prepend("<div class='alert alert-danger'><strong>Error!</strong> "+ data.message +"</div>");
         }
