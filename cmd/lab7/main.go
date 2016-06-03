@@ -75,19 +75,17 @@ func main() {
         output := make([][]string, 0)
         var id int
 		var image string
-		var recommended string
 		var price string
-		var size int
-		var spice_level int
-		var food_type string
+		var restaurant_id int
 		var name string
 
 
         for rows.Next() {
-            rows.Scan(&id, &image, &recommended, &price, &size, &spice_level, &food_type, &name)
-            array:= []string{strconv.Itoa(id), image, recommended, price, strconv.Itoa(size), strconv.Itoa(spice_level), food_type, name}
+            rows.Scan(&id, &image, &price, &restaurant_id, &name)
+            array:= []string{strconv.Itoa(id), image, price, strconv.Itoa(restaurant_id,), name}
             output = append(output, array)
         }
+
 
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
