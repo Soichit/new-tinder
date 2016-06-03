@@ -21,7 +21,7 @@ $(function(){
     ]};
 
 
-
+    /*
     var jsonName;
     var jsonUrl;
     var index = 0;
@@ -66,7 +66,7 @@ $(function(){
         document.getElementById("foodImage").src = jsonUrl;
     }
     */
-
+    /*
     function disliked() {
         if (index >= 9) {
             index = -1;
@@ -84,6 +84,7 @@ $(function(){
         restaurantView = false;
         hideElements();
     }
+    */
 
 })
 
