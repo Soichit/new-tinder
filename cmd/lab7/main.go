@@ -112,7 +112,7 @@ func main() {
             return
         }
         
-        output := make([][3]string, 0)
+        output := make([][4]string, 0)
         
 
     	// The variable(s) here should match your returned columns in the EXACT same order as you give them in your query
