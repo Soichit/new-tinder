@@ -80,7 +80,7 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            array:= [3]string{strconv.Itoa(id), image, name, price}
+            array:= [4]string{strconv.Itoa(id), image, name, price}
             output = append(output, array)
         }
 

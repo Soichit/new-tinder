@@ -47,9 +47,9 @@ $(function(){
         $.get("getFoodStack", function(data){
             console.log(data);
             jsonData = data;
-            jsonName = data.result[2];
-            jsonUrl = data.result[1];
-            jsonPrice = data.result[3];
+            jsonName = data.result.[1][2];
+            jsonUrl = data.result.[1][1];
+            jsonPrice = data.result.[1][3];
 
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodPrice").innerHTML = jsonPrice;
