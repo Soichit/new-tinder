@@ -75,7 +75,7 @@ func main() {
         output := make([][]string, 0)
         var id int
 		var image string
-		var recommended bool
+		var recommended string
 		var price string
 		var size int
 		var spice_level int
@@ -84,7 +84,7 @@ func main() {
 
 
         for rows.Next() {
-            rows.Scan(&id, &image, strconv.FormatBool(&recommended), &price, &size, &spice_level, &food_type, &name)
+            rows.Scan(&id, &image, &recommended, &price, &size, &spice_level, &food_type, &name)
             array:= []string{strconv.Itoa(id), image, recommended, price, strconv.Itoa(size), strconv.Itoa(spice_level), food_type, name}
             output = append(output, array)
         }
