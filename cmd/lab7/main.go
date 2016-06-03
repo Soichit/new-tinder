@@ -23,7 +23,7 @@ var (
 	db *sql.DB
 )
 
-var global_var int := 0;
+var global_var int
 
 func main() {
 	port := os.Getenv("PORT")
@@ -32,6 +32,7 @@ func main() {
 	}
 
 	var errd error
+	global_var := 0
 	// here we want to open a connection to the database using an environemnt variable.
 	// This isn't the best technique, but it is the simplest one for heroku
 	db, errd = sql.Open("postgres", os.Getenv("DATABASE_URL"))
