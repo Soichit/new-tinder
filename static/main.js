@@ -46,7 +46,7 @@ $(function(){
     }
 
     function liked() {
-        if (index <= foodLength - 1) {
+        if (index <= foodLength) {
             getData();
             document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
         }
