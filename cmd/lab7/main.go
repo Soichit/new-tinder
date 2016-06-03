@@ -23,10 +23,10 @@ var (
 	db *sql.DB
 )
 
-var globalIndex;
+var globalIndex
 
 func init() {
-	globalIndex = 0;
+	globalIndex = 0
 }
 
 func main() {
