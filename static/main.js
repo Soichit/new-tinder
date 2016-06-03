@@ -44,7 +44,7 @@ $(function(){
     }, "json")
 
     function getData() {
-        $.get("getFoodStack", function(data, 0){
+        $.get("getFoodStack", function(data){
             console.log(data);
             jsonData = data;
             jsonName = data.result[2];

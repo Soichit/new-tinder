@@ -23,13 +23,10 @@ var (
 	db *sql.DB
 )
 
-var globalIndex = 0
 
-func init() {
-	globalIndex = 0
-}
 
 func main() {
+	var globalIndex = 0
 	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("$PORT must be set")
@@ -62,46 +59,8 @@ func main() {
 	})
 
 
-
-	/*
-	router.GET("/query1", func(c *gin.Context) {
-		table := "<table class='table'><thead><tr>"
-		// put your query here
-		rows, err := db.Query("SELECT * FROM food") // <--- EDIT THIS LINE
-		if err != nil {
-			// careful about returning errors to the user!
-			c.AbortWithError(http.StatusInternalServerError, err)
-		}
-		// foreach loop over rows.Columns, using value
-		cols, _ := rows.Columns()
-		if len(cols) == 0 {
-			c.AbortWithStatus(http.StatusNoContent)
-		}
-		for _, value := range cols {
-			table += "<th class='text-center'>" + value + "</th>"
-		}
-		// once you've added all the columns in, close the header
-		table += "</thead><tbody>"
-		// declare all your RETURNED columns here
-		var id int      // <--- EDIT THESE LINES
-		var image string
-		var name string //<--- ^^^^
-		//var price []uint8
-		for rows.Next() {
-			// assign each of them, in order, to the parameters of rows.Scan.
-			// preface each variable with &
-			rows.Scan(&id, &image, &name) // <--- EDIT THIS LINE
-			// can't combine ints and strings in Go. Use strconv.Itoa(int) instead
-			table += "<tr><td>" + strconv.Itoa(id) + "</td><td>" + image + "</td><td>" + name + "</td></tr>"// <--- EDIT THIS LINE
-		}
-		// finally, close out the body and table
-		table += "</tbody></table>"
-		c.Data(http.StatusOK, "text/html", []byte(table))
-	})
-	*/
-
-	router.GET("getFoodStack", func(c *gin.Context, foodNumber int) {
-    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(foodNumber))
+	router.GET("getFoodStack", func(c *gin.Context) {
+    rows, err := db.Query("SELECT * FROM food WHERE id = " + strconv.Itoa(globalIndex))
         if err != nil {
             c.AbortWithError(http.StatusInternalServerError, err)
             return
