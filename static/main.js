@@ -51,6 +51,7 @@ $(function(){
             jsonPrice = data.result[3];
             console.log(jsonName);
             console.log(jsonUrl);
+            console.log(jsonPrice);
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodImage").src = jsonUrl;
         }, "json")

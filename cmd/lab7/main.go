@@ -57,7 +57,7 @@ func main() {
 
 
 
-
+	/*
 	router.GET("/query1", func(c *gin.Context) {
 		table := "<table class='table'><thead><tr>"
 		// put your query here
@@ -92,11 +92,12 @@ func main() {
 		table += "</tbody></table>"
 		c.Data(http.StatusOK, "text/html", []byte(table))
 	})
+	*/
 
 
 
 	router.GET("getFoodStack", func(c *gin.Context) {
-    rows, err := db.Query("SELECT * FROM food WHERE id = 1")
+    rows, err := db.Query("SELECT * FROM food WHERE id = 2")
         if err != nil {
             c.AbortWithError(http.StatusInternalServerError, err)
             return
