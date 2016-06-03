@@ -119,42 +119,16 @@ func main() {
 
         for rows.Next() {
             rows.Scan(&id, &image, &name, &price)
-            array:= []string{strconv.Itoa(id), image, name, price}
-            output = append(output, array)
+            output = append(output, id)
+            output = append(output, image)
+            output = append(output, name)
+            output = append(output, price)
         }
+        
         //Finally, return your results to the user:
     	c.JSON(http.StatusOK, gin.H{"result": output})
     })
 
-
-
-	router.GET("/query3", func(c *gin.Context) {
-		table := "<table class='table'><thead><tr>"
-		// put your query here
-		rows, err := db.Query("SELECT * FROM food") // <--- EDIT THIS LINE
-		if err != nil {
-			// careful about returning errors to the user!
-			c.AbortWithError(http.StatusInternalServerError, err)
-		}
-		// foreach loop over rows.Columns, using value
-		cols, _ := rows.Columns()
-		if len(cols) == 0 {
-			c.AbortWithStatus(http.StatusNoContent)
-		}
-		for _, value := range cols {
-			table += "<th class='text-center'>" + value + "</th>"
-		}
-		// once you've added all the columns in, close the header
-		table += "</thead><tbody>"
-		// columns
-		for rows.Next() {
-			// rows.Scan() // put columns here prefaced with &
-			table += "<tr><td></td></tr>" // <--- EDIT THIS LINE
-		}
-		// finally, close out the body and table
-		table += "</tbody></table>"
-		c.Data(http.StatusOK, "text/html", []byte(table))
-	})
 
 	// NO code should go after this line. it won't ever reach that point
 	router.Run(":" + port)
