@@ -46,6 +46,7 @@ $(function(){
     function getData() {
         $.get("getFoodStack", function(data){
             console.log(data);
+            console.log("TEST");
             jsonData = data;
             jsonName = data.result.[1][2];
             jsonUrl = data.result.[1][1];
