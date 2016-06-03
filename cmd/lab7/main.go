@@ -94,10 +94,8 @@ func main() {
 	})
 	*/
 
-
-
 	router.GET("getFoodStack", func(c *gin.Context) {
-    rows, err := db.Query("SELECT * FROM food WHERE id = 3")
+    rows, err := db.Query("SELECT * FROM food WHERE id = " + 2)
         if err != nil {
             c.AbortWithError(http.StatusInternalServerError, err)
             return
