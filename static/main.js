@@ -3,8 +3,8 @@ $(function(){
     var index = 0;
     var retreivedData;
     var foodLength;
+    var jsonName;
     var availableFood = [];
-    var firstTime = true;
 
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
@@ -31,13 +31,11 @@ $(function(){
     }
 
     function getAllFoods() {
-        if (firstTime) {
-            for (var i = 0; i < foodLength; i++) {
-                availableFood.push(i);
-            }
-            console.log(availableFood);
-            firstTime = !firstTime;
+        for (var i = 0; i < foodLength; i++) {
+            availableFood.push(i);
         }
+        console.log(availableFood);
+        firstTime = !firstTime;
     }
 
     function setFoodInfo() {
@@ -70,7 +68,6 @@ $(function(){
 
     function liked() {
         if (availableFood.length > 0) {
-            getData();
             document.getElementById("youMatched").innerHTML = "It's a Match! ...with " + jsonName;
         }
     }
