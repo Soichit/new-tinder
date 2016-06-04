@@ -35,7 +35,6 @@ $(function(){
             availableFood.push(i);
         }
         console.log(availableFood);
-        firstTime = !firstTime;
     }
 
     function setFoodInfo() {
