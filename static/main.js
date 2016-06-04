@@ -18,8 +18,8 @@ $(function(){
     }, "json")
 
     function getData() {
-        console.log("FIRST");
         $.get("getFoodStack", function(data){
+            console.log("FIRST");
             console.log(data);
             jsonData = data.result[index];
             foodLength = data.result.length;
@@ -32,7 +32,10 @@ $(function(){
             document.getElementById("foodPrice").innerHTML = jsonPrice;
             document.getElementById("foodImage").src = jsonUrl;
         }, "json")
-        getAllFoods();
+        .done(function() {
+            getAllFoods();
+        })
+        
     }
 
     function getAllFoods() {
