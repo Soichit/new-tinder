@@ -63,6 +63,7 @@ $(function(){
             index = availableFood[removeIndex];
             console.log(index);
             availableFood.splice(removeIndex, 1);
+            console.log(availableFood);
             setFoodInfo();
         }
     }
