@@ -23,6 +23,7 @@ $(function(){
             console.log(data);
             jsonData = data.result[index];
             foodLength = data.result.length;
+            console.log("foodLength: " + foodLength);
             jsonUrl = jsonData[1];
             jsonPrice = jsonData[2];
             jsonName = jsonData[4];
@@ -34,7 +35,7 @@ $(function(){
     }
 
     function getAllFoods() {
-        for (var i = 0; i < foodLength.length; i++) {
+        for (var i = 0; i < foodLength; i++) {
             availableFood.push(i);
         }
         console.log(availableFood);
