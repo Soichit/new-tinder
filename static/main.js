@@ -9,7 +9,7 @@ $(function(){
         document.getElementById("dislike").onclick = disliked;
         document.getElementById("like").onclick = liked;
         getData();
-        availableFood();
+        getAllFoods();
     };
 
     $.get("/ping", function(data){
@@ -33,7 +33,7 @@ $(function(){
         }, "json")
     }
 
-    function availableFood() {
+    function getAllFoods() {
         for (var i = 0; i < foodLength.length; i++) {
             availableFood.push(i);
         }
