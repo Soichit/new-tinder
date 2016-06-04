@@ -23,6 +23,7 @@ $(function(){
             retreivedData = data;
             foodLength = data.result.length;
             console.log(data);
+            disliked();
         }, "json")
         .done(function() {
             getAllFoods();
@@ -40,7 +41,7 @@ $(function(){
     }
 
     function setFoodInfo() {
-        jsonData = data.result[index];
+        jsonData = retreivedData.result[index];
         jsonUrl = jsonData[1];
         jsonPrice = jsonData[2];
         jsonName = jsonData[4];
