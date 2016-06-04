@@ -4,6 +4,7 @@ $(function(){
     var jsonData;
     var foodLength;
     var availableFood = [];
+    var firstTime = true;
 
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
@@ -19,11 +20,9 @@ $(function(){
 
     function getData() {
         $.get("getFoodStack", function(data){
-            console.log("FIRST");
             console.log(data);
             jsonData = data.result[index];
             foodLength = data.result.length;
-            console.log("foodLength: " + foodLength);
             jsonUrl = jsonData[1];
             jsonPrice = jsonData[2];
             jsonName = jsonData[4];
@@ -39,12 +38,13 @@ $(function(){
     }
 
     function getAllFoods() {
-        console.log("SECOND");
-        console.log("foodLength: " + foodLength);
-        for (var i = 0; i < foodLength; i++) {
-            availableFood.push(i);
+        if (firstTime) {
+            for (var i = 0; i < foodLength; i++) {
+                availableFood.push(i);
+            }
+            console.log(availableFood);
+            firstTime = !firstTime;
         }
-        console.log(availableFood);
     }
     
 
