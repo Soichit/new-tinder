@@ -35,6 +35,7 @@ $(function(){
     }
 
     function getAllFoods() {
+        console.log("foodLength: " + foodLength);
         for (var i = 0; i < foodLength; i++) {
             availableFood.push(i);
         }
