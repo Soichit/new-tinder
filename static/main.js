@@ -9,7 +9,6 @@ $(function(){
         document.getElementById("dislike").onclick = disliked;
         document.getElementById("like").onclick = liked;
         getData();
-        getAllFoods();
     };
 
     $.get("/ping", function(data){
@@ -32,6 +31,7 @@ $(function(){
             document.getElementById("foodPrice").innerHTML = jsonPrice;
             document.getElementById("foodImage").src = jsonUrl;
         }, "json")
+        getAllFoods();
     }
 
     function getAllFoods() {
