@@ -34,25 +34,24 @@ $(function(){
     }
 
     function availableFood() {
-        for (int i = 0; i < foodLength.length; i++) {
+        for (var i = 0; i < foodLength.length; i++) {
             availableFood.push(i);
         }
         console.log(availableFood);
     }
     
 
-    function disliked() {
-        document.getElementById("youMatched").innerHTML = "";
-        removeIndex = Math.floor(Math.random() * availableFood.length); //random # between 0 and availableFood.length
-        index = availableFood[removeIndex];
-        console.log(index);
-        availableFood.splice(removeIndex, 1);
-        
+    function disliked() {      
         if (availableFood.length == 0) { //size - 1
             document.getElementById("foodName").innerHTML = "----";
             document.getElementById("foodPrice").innerHTML = "";
             document.getElementById("foodImage").src = 'static/img/empty.jpg';
         } else {
+            document.getElementById("youMatched").innerHTML = "";
+            removeIndex = Math.floor(Math.random() * availableFood.length); //random # between 0 and availableFood.length
+            index = availableFood[removeIndex];
+            console.log(index);
+            availableFood.splice(removeIndex, 1);
             getData();
         }
     }
