@@ -18,6 +18,7 @@ $(function(){
     }, "json")
 
     function getData() {
+        console.log("FIRST");
         $.get("getFoodStack", function(data){
             console.log(data);
             jsonData = data.result[index];
@@ -35,6 +36,7 @@ $(function(){
     }
 
     function getAllFoods() {
+        console.log("SECOND");
         console.log("foodLength: " + foodLength);
         for (var i = 0; i < foodLength; i++) {
             availableFood.push(i);
