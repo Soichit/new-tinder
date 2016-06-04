@@ -1,7 +1,7 @@
 $(function(){
 
     var index = 0;
-    var jsonData;
+    var retreivedData;
     var foodLength;
     var availableFood = [];
     var firstTime = true;
@@ -20,21 +20,13 @@ $(function(){
 
     function getData() {
         $.get("getFoodStack", function(data){
-            console.log(data);
-            jsonData = data.result[index];
+            retreivedData = data;
             foodLength = data.result.length;
-            jsonUrl = jsonData[1];
-            jsonPrice = jsonData[2];
-            jsonName = jsonData[4];
-
-            document.getElementById("foodName").innerHTML = jsonName;
-            document.getElementById("foodPrice").innerHTML = jsonPrice;
-            document.getElementById("foodImage").src = jsonUrl;
+            console.log(data);
         }, "json")
         .done(function() {
             getAllFoods();
         })
-        
     }
 
     function getAllFoods() {
@@ -45,6 +37,17 @@ $(function(){
             console.log(availableFood);
             firstTime = !firstTime;
         }
+    }
+
+    function setFoodInfo() {
+        jsonData = data.result[index];
+        jsonUrl = jsonData[1];
+        jsonPrice = jsonData[2];
+        jsonName = jsonData[4];
+
+        document.getElementById("foodName").innerHTML = jsonName;
+        document.getElementById("foodPrice").innerHTML = jsonPrice;
+        document.getElementById("foodImage").src = jsonUrl;
     }
     
 
@@ -59,7 +62,7 @@ $(function(){
             index = availableFood[removeIndex];
             console.log(index);
             availableFood.splice(removeIndex, 1);
-            getData();
+            setFoodInfo();
         }
     }
 
