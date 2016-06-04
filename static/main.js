@@ -2,7 +2,8 @@ $(function(){
 
     var index = 0;
     var jsonData;
-    var foodLength = 0;
+    var foodLength;
+    var pastFood = [];
 
     window.onload = function() {
         document.getElementById("dislike").onclick = disliked;
@@ -22,8 +23,8 @@ $(function(){
             jsonData = data.result[index];
             foodLength = data.result.length;
             jsonUrl = jsonData[1];
-            jsonName = jsonData[4];
             jsonPrice = jsonData[2];
+            jsonName = jsonData[4];
 
             document.getElementById("foodName").innerHTML = jsonName;
             document.getElementById("foodPrice").innerHTML = jsonPrice;
@@ -33,14 +34,15 @@ $(function(){
     
 
     function disliked() {
+        index = Math.floor(Math.random() * (foodLength - 1)); //random # between 0 and foodLenth - 1
         console.log(index);
+
         document.getElementById("youMatched").innerHTML = "";
         if (index >= foodLength - 1) { //size - 1
             document.getElementById("foodName").innerHTML = "----";
             document.getElementById("foodPrice").innerHTML = "";
             document.getElementById("foodImage").src = 'static/img/empty.jpg';
         } else {
-            index++;
             getData();
         }
     }
