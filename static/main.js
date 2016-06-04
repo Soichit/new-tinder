@@ -23,10 +23,10 @@ $(function(){
             retreivedData = data;
             foodLength = data.result.length;
             console.log(data);
-            disliked();
         }, "json")
         .done(function() {
             getAllFoods();
+            disliked();
         })
     }
 
